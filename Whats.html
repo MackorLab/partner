@@ -28,16 +28,6 @@
     
     <style>
         
-   .whatss {
-    width: 700px; /* Ширина элемента в пикселах */
-    padding: 10px; /* Поля вокруг текста */
-    margin: auto; /* Выравниваем по центру */
-    background: #D6E1E5; /* Цвет фона */
-   }
-  
-        
-        
-        
         
         
         .button {
@@ -68,7 +58,7 @@
 
 <body>
      <div class="d-flex justify-content-center"> 
-    <h1>WhatsApp client browser example</h1>
+    <h1>Подключение к WhatsApp</h1>
 </div> 
  
     
@@ -93,8 +83,8 @@
 	 </div>     
 	 <div class="d-flex justify-content-center">        
     <div style="display:grid; width: 20%">
-        <button id="getQrBtn" class="button buttonGreen">Получить QR код</button>
-        <button style="display: none" hidden id="logoutQrBtn" class="button buttonGreen">Logout</button>
+        <button id="getQrBtn" type="button" class="btn btn-success">Получить QR код</button>
+        <button style="display: none" hidden id="logoutQrBtn" type="button" class="btn btn-success">Logout</button>
         <img hidden id="img-qr-code" alt="QR-Code" class="sb-qr-wizard-qr-code" aria-hidden="false" src="data:image/png;base64,%QR_DATA%" style="">
     </div>
     </div>  
