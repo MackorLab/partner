@@ -6,7 +6,8 @@
     <meta content="utf-8" http-equiv="encoding">
     
     
-    
+ <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+<script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script> 
     
     
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
@@ -55,6 +56,13 @@
         }
     </style>
 </head>
+	
+	
+<script>
+vkBridge.send('VKWebAppInit');
+</script>
+	
+	
 
 <body>
      <div class="d-flex justify-content-center"> 
