@@ -61,19 +61,29 @@ vkBridge.send('VKWebAppInit');
     
     <div class="d-flex justify-content-center">  
     <p style="color:blue" id="statusText"></p>
+    </div>     
+    <div class="d-flex justify-content-center">    
     <p style="color:blue" id="resultText"></p>
     </div>      
 	    
     <div class="d-flex justify-content-center">     
     <p>Нажмите кнопку для авторизации</p>
-	 </div>     
-	 <div class="d-flex justify-content-center">        
-    <div style="display:grid; width: 20%">
+    </div> 
+	
+<div class="d-flex justify-content-center">        
+
+	    
         <button id="getQrBtn" type="button" class="btn btn-success btn-lg">Получить QR код</button>
+	 </div>
+	
+	 <div class="d-flex justify-content-center">   
         <button style="display: none" hidden id="logoutQrBtn" type="button" class="btn btn-success btn-lg">Отключить</button>
+	</div>	 
+	
+	 <div class="d-flex justify-content-center"> 	 
         <img hidden id="img-qr-code" alt="QR-Code" class="sb-qr-wizard-qr-code" aria-hidden="false" src="data:image/png;base64,%QR_DATA%" style="">
     </div>
-    </div>  
+   
     
     <script type="text/javascript" src="https://unpkg.com/@green-api/whatsapp-api-client/lib/whatsapp-api-client.min.js"></script>
     <script>
