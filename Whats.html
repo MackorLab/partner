@@ -67,14 +67,12 @@
 </head>
 
 <body>
-  <div class="row">
-    <div class="col-md-8 mx-auto">
+     <div class="d-flex justify-content-center"> 
     <h1>WhatsApp client browser example</h1>
 </div> 
-</div> 
+ 
     
-    <div class="row">
-    <div class="col-md-8 mx-auto">  
+       <div class="d-flex justify-content-center">  
     
     <form>
         <label for="idInstance">Id Instance:</label><br>
@@ -83,10 +81,9 @@
         <input required type="text" id="apiTokenIsntance" name="apiTokenIsntance"><br>
     </form>
 </div> 
-</div> 
+
     
-    <div class="row">
-    <div class="col-md-8 mx-auto">   
+    <div class="d-flex justify-content-center">  
     <p style="color:blue" id="statusText"></p>
     <p style="color:blue" id="resultText"></p>
     <p>Нажмите кнопку для авторизации</p>
@@ -96,7 +93,7 @@
         <img hidden id="img-qr-code" alt="QR-Code" class="sb-qr-wizard-qr-code" aria-hidden="false" src="data:image/png;base64,%QR_DATA%" style="">
     </div>
     </div>  
-    </div>  
+    
     <script type="text/javascript" src="https://unpkg.com/@green-api/whatsapp-api-client/lib/whatsapp-api-client.min.js"></script>
     <script>
         var intervalId = null
