@@ -5,6 +5,19 @@
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
     <style>
+        
+   .whatss {
+    width: 200px; /* Ширина элемента в пикселах */
+    padding: 10px; /* Поля вокруг текста */
+    margin: auto; /* Выравниваем по центру */
+    background: #fc0; /* Цвет фона */
+   }
+  
+        
+        
+        
+        
+        
         .button {
             border: none;
             color: white;
@@ -32,7 +45,7 @@
 </head>
 
 <body>
-
+ <div class="whatss">
     <h1>WhatsApp client browser example</h1>
 
     <form>
@@ -50,6 +63,8 @@
         <button style="display: none" hidden id="logoutQrBtn" class="button buttonGreen">Logout</button>
         <img hidden id="img-qr-code" alt="QR-Code" class="sb-qr-wizard-qr-code" aria-hidden="false" src="data:image/png;base64,%QR_DATA%" style="">
     </div>
+    </div>  
+     
     <script type="text/javascript" src="https://unpkg.com/@green-api/whatsapp-api-client/lib/whatsapp-api-client.min.js"></script>
     <script>
         var intervalId = null
