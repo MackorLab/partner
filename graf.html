@@ -1,724 +1,138 @@
-<html class="zc-html">
-
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>ZingSoft Demo</title>
-  <script nonce="undefined" src="https://cdn.zingchart.com/zingchart.min.js"></script>
-  <style>
-    .zc-body {
-      background: #0C1D2E;
-    }
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
+  <link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
+  <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
+  <style type="text/css">
 
-    .chart--container {
-      height: 100%;
+    html,
+    body,
+    #container {
       width: 100%;
-      min-height: 850px;
+      height: 100%;
+      margin: 0;
+      padding: 0;
     }
-
-    .zc-ref {
-      display: none;
-    }
-  </style>
+  
+</style>
 </head>
-​
-
-<body class="zc-body">
-  ​
-  <div id="myChart" class="chart--container">
-    <a href="https://www.zingchart.com/" rel="noopener" class="zc-ref">Powered by ZingChart</a>
-  </div>
+<body>
+  
+  <div id="container"></div>
+  
 
   <script>
-    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "b55b025e438fa8a98e32482b5f768ff5"];
-    let bgColorMain = '#0C1D2E';
 
-    let g1a = {
-      type: 'null',
-      backgroundColor: bgColorMain,
-      height: '20%',
-      width: '100%',
-      x: '4%',
-      y: '0%',
-      title: {
-        text: 'VIRTUAL VIOLENCE',
-        align: 'left',
-        fontColor: '#FFF',
-        fontSize: '35px',
-        padding: '20 0 10 30',
-      },
-      subtitle: {
-        text: 'youth criminal activity and the rise of the video game',
-        align: 'left',
-        fontColor: '#FFF',
-        fontSize: '12px',
-        fontWeight: 'normal',
-        padding: '30 0 0 35',
-      },
-      labels: [{
-          align: 'left',
-          backgroundColor: '#0092B6',
-          marginLeft: '25px',
-          height: '10px',
-          width: '20px',
-          x: '520px',
-          y: '30px',
-        },
-        {
-          text: 'video game units sold<br>(in milions)',
-          align: 'left',
-          fontColor: '#FFF',
-          fontSize: '10px',
-          fontWeight: 'normal',
-          x: '545px',
-          y: '25px',
-        },
-        {
-          align: 'left',
-          backgroundColor: '#E58A3D',
-          marginLeft: '25px',
-          height: '10px',
-          width: '20px',
-          x: '520px',
-          y: '60px',
-        },
-        {
-          text: 'convicted violent crime offenders<br>between the ages of 12 and 18<br>(in thousands)',
-          align: 'left',
-          fontColor: '#FFF',
-          fontSize: '10px',
-          fontWeight: 'normal',
-          x: '545px',
-          y: '55px',
-        }
-      ]
-    };
+    anychart.onDocumentReady(function () {
+      // create data set on our data
+      var dataSet = anychart.data.set(getData());
 
-    let g1 = {
-      type: 'hmixed',
-      backgroundColor: bgColorMain,
-      height: '30%',
-      width: '40%',
-      x: '2%',
-      y: '10%',
-      plot: {
-        animation: {
-          effect: 'ANIMATION_EXPAND_TOP',
-          method: 'ANIMATION_LINEAR',
-          speed: 200,
-          sequence: 'ANIMATION_BY_PLOT_AND_NODE',
-        }
-      },
-      plotarea: {
-        margin: '10px 0 10px 50px',
-      },
-      scaleX2: {
-        lineWidth: 0,
-        guide: {
-          visible: false,
-        },
-        item: {
-          visible: false,
-        },
-        tick: {
-          visible: false,
-        },
-      },
-      scaleY: {
-        lineColor: '#FFF',
-        lineWidth: '[1px]',
-        minValue: 0,
-        maxValue: 900,
-        mirrored: true,
-        step: 100,
-        guide: {
-          lineColor: '#364250',
-        },
-        item: {
-          fontColor: '#FFF',
-          fontSize: '11px',
-          fontWeight: 'normal',
-        },
-        tick: {
-          visible: false,
-        }
-      },
-      tooltip: {
-        text: '%node-value thousands',
-      },
-      series: [{
-          type: 'hbar',
-          backgroundColor: '#E58A3D',
-          barWidth: '3px',
-          scales: 'scale-x-2,scale-y',
-          values: [null, 377, null, 436, 365, 371, 270, 467, 412, 610, 616, 705, 833],
-          valueBox: {
-            text: '%node-value',
-            placement: 'out',
-            fontColor: '#FFF',
-            fontSize: '10px',
-            fontWeight: 'normal',
-            offsetX: '-22px',
-          }
-        },
-        {
-          type: 'hscatter',
-          scales: 'scale-x-2,scale-y',
-          values: [
-            [1, 377],
-            [3, 436],
-            [4, 365],
-            [5, 371],
-            [6, 270],
-            [7, 467],
-            [8, 412],
-            [9, 610],
-            [10, 616],
-            [11, 705],
-            [12, 833]
-          ],
-          marker: {
-            type: 'rectangle',
-            width: '17px',
-            height: '7px',
-            borderWidth: 0,
-            backgroundColor: '#E58A3D',
-          }
-        }
-      ]
-    };
+      // map data for the first series, take x from the zero column and value from the first column of data set
+      var firstSeriesData = dataSet.mapAs({ x: 0, value: 1 });
 
-    let g2 = {
-      type: 'hmixed',
-      backgroundColor: bgColorMain,
-      height: '30%',
-      width: '55%',
-      x: '42%',
-      y: '10%',
-      plot: {
-        animation: {
-          effect: 'ANIMATION_EXPAND_BOTTOM',
-          method: 'ANIMATION_LINEAR',
-          speed: 200,
-          sequence: 'ANIMATION_BY_PLOT_AND_NODE',
-        }
-      },
-      plotarea: {
-        margin: '10px 50px 10px 0',
-      },
-      scaleX: {
-        item: {
-          fontColor: '#FFF',
-          fontSize: '9px',
-          fontWeight: 'normal',
-          offsetX: '18px',
-          offsetY: '7px',
-        },
-        itemsOverlap: true,
-        guide: {
-          visible: false,
-        },
-        labels: ['', '2007', '2006', '2005', '2004', '2003', '2002', '2001', '2000', '1999', '1998', '1997', '1996'],
-        lineWidth: '4px',
-        lineColor: '#364250',
-        maxItems: 999,
-        tick: {
-          visible: false,
-        },
-      },
-      scaleY: {
-        guide: {
-          lineColor: '#364250',
-        },
-        item: {
-          fontColor: '#FFF',
-          fontSize: '11px',
-          fontWeight: 'normal',
-        },
-        lineWidth: 1,
-        lineColor: '#FFF',
-        minValue: 0,
-        maxValue: 300,
-        step: 50,
-        tick: {
-          visible: false,
-        },
-      },
-      tooltip: {
-        text: '%node-value milions',
-      },
-      series: [{
-          type: 'hbar',
-          values: [null, 267.8, 243.1, 217.1, 248.3, 239.6, 224.3, 200.7, 194.8, 183.2, 151.3, 107.1, 73.3],
-          backgroundColor: '#0092B6',
-          barWidth: '3px',
-          valueBox: {
-            text: '%node-value',
-            placement: 'out',
-            fontColor: '#FFF',
-            fontSize: '10px',
-            fontWeight: 'normal',
-            offsetX: '25px',
-          }
-        },
-        {
-          type: 'hscatter',
-          values: [
-            [1, 267.8],
-            [2, 243.1],
-            [3, 217.1],
-            [4, 248.3],
-            [5, 239.6],
-            [6, 224.3],
-            [7, 200.7],
-            [8, 194.8],
-            [9, 183.2],
-            [10, 151.3],
-            [11, 107.1],
-            [12, 73.3]
-          ],
-          marker: {
-            type: 'rectangle',
-            width: '17px',
-            height: '7px',
-            borderWidth: 0,
-            backgroundColor: '#0092B6',
-          }
-        }
-      ]
-    };
+      // map data for the second series, take x from the zero column and value from the second column of data set
+      var secondSeriesData = dataSet.mapAs({ x: 0, value: 2 });
 
-    let g3 = {
-      type: 'pie',
-      backgroundColor: bgColorMain,
-      height: '20%',
-      width: '50%',
-      x: '0%',
-      y: '43%',
-      title: {
-        text: 'FPS GAMES SOLD (2007)',
-        align: 'center',
-        fontColor: '#FFF',
-        fontSize: '13px',
-        fontWeight: 'normal',
-        paddingTop: '170px',
-        paddingLeft: '40px',
-      },
-      plot: {
-        borderWidth: 0,
-        animation: {
-          effect: 'ANIMATION_EXPAND_VERTICAL',
-          method: 'ANIMATION_LINEAR',
-          speed: 550,
-          sequence: 'ANIMATION_BY_PLOT',
-        }
-      },
-      plotarea: {
-        margin: '5px 0 10px 40px',
-      },
-      scale: {
-        sizeFactor: 0.75,
-      },
-      scaleR: {
-        refAngle: 320,
-      },
-      tooltip: {
-        text: '%node-value%',
-        fontColor: '#000',
-      },
-      series: [{
-          values: [11],
-          backgroundColor: '#0092B6',
-          valueBox: [{
-              text: 'shooter',
-              fontColor: '#0092B6',
-              fontSize: '11px',
-              fontWeight: 'normal',
-              placement: 'out',
-            },
-            {
-              text: '%node-value%',
-              decimals: 0,
-              fontSize: '12px',
-              fontColor: '#000',
-            }
-          ]
-        },
-        {
-          values: [89],
-          backgroundColor: '#E58A3D',
-          valueBox: {
-            text: 'total',
-            fontColor: '#E58A3D',
-            fontSize: '11px',
-            fontWeight: 'normal',
-            placement: 'out',
-          },
-        }
-      ]
-    };
+      // map data for the third series, take x from the zero column and value from the third column of data set
+      var thirdSeriesData = dataSet.mapAs({ x: 0, value: 3 });
 
-    let g4 = {
-      type: 'pie',
-      backgroundColor: bgColorMain,
-      height: '20%',
-      width: '50%',
-      x: '50%',
-      y: '43%',
-      title: {
-        text: 'GAMES SALES BY RATING (2007)',
-        align: 'center',
-        fontColor: '#FFF',
-        fontSize: '13px',
-        fontWeight: 'normal',
-        paddingTop: '170px',
-        paddingLeft: '-60px',
-      },
-      plot: {
-        borderWidth: 0,
-        animation: {
-          effect: 'ANIMATION_EXPAND_VERTICAL',
-          method: 'ANIMATION_LINEAR',
-          speed: 650,
-          sequence: 'ANIMATION_BY_PLOT',
-        }
-      },
-      plotarea: {
-        margin: '5px 60px 10px 0',
-      },
-      scale: {
-        sizeFactor: 0.75,
-      },
-      scaleR: {
-        refAngle: 270,
-      },
-      tooltip: {
-        text: '%node-value%',
-        fontColor: '#000',
-      },
-      series: [{
-          values: [15],
-          backgroundColor: '#7F2B80',
-          valueBox: [{
-              text: 'mature',
-              fontColor: '#7F2B80',
-              fontSize: '11px',
-              fontWeight: 'normal',
-              placement: 'out',
-            },
-            {
-              text: '%node-value%',
-              decimals: 0,
-              fontSize: '12px',
-              fontColor: '#000',
-            }
-          ]
-        },
-        {
-          values: [45],
-          backgroundColor: '#FFF20D',
-          valueBox: [{
-              text: 'all ages',
-              fontColor: '#FFF20D',
-              fontSize: '11px',
-              fontWeight: 'normal',
-              placement: 'out',
-            },
-            {
-              text: '%node-value%',
-              decimals: 0,
-              fontColor: '#000',
-              fontSize: '12px',
-            }
-          ]
-        },
-        {
-          values: [12],
-          backgroundColor: '#0092B6',
-          valueBox: [{
-              text: 'youth',
-              fontColor: '#0092B6',
-              fontSize: '11px',
-              fontWeight: 'normal',
-              placement: 'out',
-            },
-            {
-              text: '%node-value%',
-              decimals: 0,
-              fontColor: '#000',
-              fontSize: '12px',
-            }
-          ]
-        },
-        {
-          values: [28],
-          backgroundColor: '#E58A3D',
-          valueBox: [{
-              text: 'teen',
-              fontColor: '#E58A3D',
-              fontSize: '11px',
-              fontWeight: 'normal',
-              placement: 'out',
-            },
-            {
-              text: '%node-value%',
-              decimals: 0,
-              fontColor: '#000',
-              fontSize: '12px',
-            }
-          ]
-        }
-      ]
-    };
+      // create line chart
+      var chart = anychart.line();
 
-    let g5 = {
-      type: 'hbar',
-      backgroundColor: bgColorMain,
-      height: '15%',
-      width: '40%',
-      x: '10%',
-      y: '67%',
-      title: {
-        text: 'THE FIVE BEST SELLING VIDEO GAMES OF ALL<br>TIME ARE <span style="color:#0092B6">NON-VIOLENT</span> AND INCLUDE',
-        align: 'left',
-        fontColor: '#FFF',
-        fontSize: '12px',
-        fontWeight: 'normal',
-        paddingTop: '10px',
-      },
-      plot: {
-        animation: {
-          effect: 'ANIMATION_EXPAND_BOTTOM',
-          method: 'ANIMATION_LINEAR',
-          speed: 400,
-          sequence: 'ANIMATION_BY_PLOT_AND_NODE',
-        },
-        barWidth: '90%',
-        valueBox: {
-          text: '%node-valueM',
-          fontSize: '10px',
-          fontWeight: 'normal',
-          fontColor: '#FFF',
-        },
-      },
-      plotarea: {
-        margin: '50px 10px 10px 120px',
-      },
-      tooltip: {
-        text: '%node-value million',
-      },
-      scaleX: {
-        values: ['FIFA SOCCER', 'THE SIMS', 'TETRIS', 'POKEMON', 'SUPER MARIO BROTHERS'],
-        lineWidth: 0,
-        item: {
-          fontColor: '#FFF',
-          fontSize: '9px',
-          fontWeight: 'normal',
-        },
-        guide: {
-          visible: false,
-        },
-        itemsOverlap: true,
-        tick: {
-          visible: false,
-        }
-      },
-      scaleY: {
-        lineWidth: 0,
-        guide: {
-          visible: false,
-        },
-        item: {
-          visible: false,
-        },
-        tick: {
-          visible: false,
-        }
-      },
-      series: [{
-        values: [100, 125, 125, 207, 240],
-        backgroundColor: '#0092B6',
-      }]
-    };
+      // turn on chart animation
+      chart.animation(true);
 
-    let g6 = {
-      type: 'hbar',
-      backgroundColor: bgColorMain,
-      height: '15%',
-      width: '40%',
-      x: '54%',
-      y: '67%',
-      title: {
-        text: 'THE FIVE MOST POPULAR <span style="color:#E58A3D">VIOLENT</span> VIDEO<br>GAMES HAVE FAR LOWER SALES NUMBER',
-        align: 'left',
-        fontColor: '#FFF',
-        fontSize: '12px',
-        fontWeight: 'normal',
-        paddingTop: '10px',
-      },
-      plot: {
-        barWidth: '90%',
-        valueBox: {
-          text: '%node-valueM',
-          fontSize: '10px',
-          fontWeight: 'normal',
-          fontColor: '#FFF',
-        },
-        animation: {
-          effect: 'ANIMATION_EXPAND_BOTTOM',
-          method: 'ANIMATION_LINEAR',
-          speed: 600,
-          sequence: 'ANIMATION_BY_NODE',
-        }
-      },
-      plotarea: {
-        margin: '50px, 50px 10px 104px',
-      },
-      scaleX: {
-        values: ['DEAD OR ALIVE', 'GOD OF WAR', 'GEARS OF WAR', 'HALO', 'GRAND THEFT AUTO'],
-        lineWidth: 0,
-        guide: {
-          visible: false,
-        },
-        item: {
-          fontColor: '#FFF',
-          fontWeight: 'normal',
-          fontSize: '9px',
-        },
-        itemsOverlap: true,
-        tick: {
-          visible: false,
-        }
-      },
-      scaleY: {
-        lineWidth: 0,
-        guide: {
-          visible: false,
-        },
-        item: {
-          visible: false,
-        },
-        tick: {
-          visible: false,
-        }
-      },
-      tooltip: {
-        text: '%node-value million',
-      },
-      series: [{
-        values: [7.5, 9, 11, 30, 70],
-        backgroundColor: '#E58A3D',
-      }]
-    };
+      // set chart padding
+      chart.padding([10, 20, 5, 20]);
 
-    let g7 = {
-      type: null,
-      backgroundColor: bgColorMain,
-      height: '17%',
-      width: '90%',
-      x: '4%',
-      y: '83%',
-      labels: [{
-          text: 'There is no question that video games are one of the most influential<br>forms of entertainment in the modern world. They have surpassed both<br>the film and music industries in both unit sales and profits. Games have<br>become a staple of popular culture, with characters such as Mario,<br>PacMan and Sonic The Hedgehog invading the conciousness of youth<br>across the world. In 2010, over 67% of households in United States<br>of America play computer or video games. However, due to their<br>interactive capabilities, games are often blamed for inspiring violence in<br>youth across the nation. Incidences such as the Columbine school<br>shootings, and the most recent Tucson assassinations have been blamed<br>on the influence of violent games; however, statistics tell a different story.',
-          align: 'left',
-          fontColor: '#FFF',
-          fontSize: '9px',
-          fontWeight: 'normal',
-          paddingLeft: '45px',
-        },
-        {
-          text: '91%',
-          align: 'left',
-          fontColor: '#0092B6',
-          fontSize: '18px',
-          fontWeight: 'bold',
-          x: '400px',
-        },
-        {
-          text: 'of parents are present at the time of<br>game purchase or rental',
-          align: 'left',
-          fontColor: '#0092B6',
-          fontSize: '11px',
-          fontWeight: 'normal',
-          x: '450px',
-        },
-        {
-          text: '86%',
-          align: 'left',
-          fontColor: '#E58A3D',
-          fontSize: '18px',
-          fontWeight: 'bold',
-          x: '400px',
-          y: '32px',
-        },
-        {
-          text: 'of children receive parental permission<br>before purchasing or renting a game',
-          align: 'left',
-          fontColor: '#E58A3D',
-          fontSize: '11px',
-          fontWeight: 'normal',
-          x: '450px',
-          y: '32px',
-        },
-        {
-          text: '90%',
-          align: 'left',
-          fontColor: '#FFF20D',
-          fontSize: '18px',
-          fontWeight: 'bold',
-          x: '400px',
-          y: '62px',
-        },
-        {
-          text: 'of parents monitor their children during<br>video game play',
-          align: 'left',
-          fontColor: '#FFF20D',
-          fontSize: '11px',
-          fontWeight: 'normal',
-          x: '450px',
-          y: '62px',
-        },
-        {
-          text: '55%',
-          align: 'left',
-          fontColor: '#7F2B80',
-          fontSize: '18px',
-          fontWeight: 'bold',
-          x: '400px',
-          y: '92px',
-        },
-        {
-          text: 'of parents believe video games are a<br>positive experience',
-          align: 'left',
-          fontColor: '#7F2B80',
-          fontSize: '11px',
-          fontWeight: 'normal',
-          x: '450px',
-          y: '92px',
-        }
-      ],
-      source: {
-        text: 'Inspired by https://karelsd.wordpress.com/2014/04/25/week-13-videogames/',
-        url: 'https://karelsd.wordpress.com/2014/04/25/week-13-videogames/',
-        target: 'blank_',
-        align: 'left',
-        color: '#fff',
-        fontWeight: 'normal',
-        padding: '0 0 5px 45px',
-      },
-    }
+      // turn on the crosshair
+      chart.crosshair().enabled(true).yLabel(false).yStroke(null);
 
-    let chartConfig = {
-      backgroundColor: bgColorMain,
-      graphset: [g1a, g1, g2, g3, g4, g5, g6, g7],
-    };
+      // set tooltip mode to point
+      chart.tooltip().positionMode('point');
 
-    zingchart.render({
-      id: 'myChart',
-      height: '100%',
-      width: '100%',
-      data: chartConfig
+      // set chart title text settings
+      chart.title(
+        'Trend of Sales of the Most Popular Products of ACME Corp.'
+      );
+
+      // set yAxis title
+      chart.yAxis().title('Number of Bottles Sold (thousands)');
+      chart.xAxis().labels().padding(5);
+
+      // create first series with mapped data
+      var firstSeries = chart.line(firstSeriesData);
+      firstSeries.name('Brandy');
+      firstSeries.hovered().markers().enabled(true).type('circle').size(4);
+      firstSeries
+        .tooltip()
+        .position('right')
+        .anchor('left-center')
+        .offsetX(5)
+        .offsetY(5);
+
+      // create second series with mapped data
+      var secondSeries = chart.line(secondSeriesData);
+      secondSeries.name('Whiskey');
+      secondSeries.hovered().markers().enabled(true).type('circle').size(4);
+      secondSeries
+        .tooltip()
+        .position('right')
+        .anchor('left-center')
+        .offsetX(5)
+        .offsetY(5);
+
+      // create third series with mapped data
+      var thirdSeries = chart.line(thirdSeriesData);
+      thirdSeries.name('Tequila');
+      thirdSeries.hovered().markers().enabled(true).type('circle').size(4);
+      thirdSeries
+        .tooltip()
+        .position('right')
+        .anchor('left-center')
+        .offsetX(5)
+        .offsetY(5);
+
+      // turn the legend on
+      chart.legend().enabled(true).fontSize(13).padding([0, 0, 10, 0]);
+
+      // set container id for the chart
+      chart.container('container');
+      // initiate chart drawing
+      chart.draw();
     });
-  </script>
-</body>
 
+    function getData() {
+      return [
+        ['1986', 3.6, 2.3, 2.8, 11.5],
+        ['1987', 7.1, 4.0, 4.1, 14.1],
+        ['1988', 8.5, 6.2, 5.1, 17.5],
+        ['1989', 9.2, 11.8, 6.5, 18.9],
+        ['1990', 10.1, 13.0, 12.5, 20.8],
+        ['1991', 11.6, 13.9, 18.0, 22.9],
+        ['1992', 16.4, 18.0, 21.0, 25.2],
+        ['1993', 18.0, 23.3, 20.3, 27.0],
+        ['1994', 13.2, 24.7, 19.2, 26.5],
+        ['1995', 12.0, 18.0, 14.4, 25.3],
+        ['1996', 3.2, 15.1, 9.2, 23.4],
+        ['1997', 4.1, 11.3, 5.9, 19.5],
+        ['1998', 6.3, 14.2, 5.2, 17.8],
+        ['1999', 9.4, 13.7, 4.7, 16.2],
+        ['2000', 11.5, 9.9, 4.2, 15.4],
+        ['2001', 13.5, 12.1, 1.2, 14.0],
+        ['2002', 14.8, 13.5, 5.4, 12.5],
+        ['2003', 16.6, 15.1, 6.3, 10.8],
+        ['2004', 18.1, 17.9, 8.9, 8.9],
+        ['2005', 17.0, 18.9, 10.1, 8.0],
+        ['2006', 16.6, 20.3, 11.5, 6.2],
+        ['2007', 14.1, 20.7, 12.2, 5.1],
+        ['2008', 15.7, 21.6, 10, 3.7],
+        ['2009', 12.0, 22.5, 8.9, 1.5]
+      ];
+    }
+  
+</script>
+</body>
 </html>
