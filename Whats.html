@@ -192,9 +192,13 @@ vkBridge.send('VKWebAppInit');
                 if (data.stateInstance === 'authorized') {
                     document.getElementById("getQrBtn").style.display = "none"
                     document.getElementById("logoutQrBtn").style.display = "block"
+		    document.getElementById("logoutWhats").style.display = "block"
+			
                 } else {
                     document.getElementById("getQrBtn").style.display = "block"
                     document.getElementById("logoutQrBtn").style.display = "none"
+		    document.getElementById("logoutWhats").style.display = "none"
+			
                 }
                  
                 
