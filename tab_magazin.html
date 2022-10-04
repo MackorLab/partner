@@ -124,12 +124,17 @@ var table = new Tabulator("#example-table", {
 });
     
   
-		
-	{title:"Name", field:"name", cellClick:function(e, cell){
-        alert("Hello");
-    },
-}	
 
+table.on("dataLoaded", function(data){
+  //data has been loaded
+});
+		
+		
+	table.on("headerClick", function(e, column){
+    //e - the click event object
+    //column - column component
+});	
+		
   </script>
 	
 	
