@@ -117,9 +117,20 @@ var table = new Tabulator("#example-table", {
         //append newly formatted contents to the row
         element.append(rowTable);
     },
+	
+	
+
+	
 });
     
-    
+  
+	table.on("headerClick", function(e, column){
+    //e - the click event object
+    //column - column component
+});
+			
+		
+		
     
   </script>
 	
