@@ -124,11 +124,12 @@ var table = new Tabulator("#example-table", {
 });
     
   
-table.on("headerContext", function(e, column){
-   alert("Hello");
-});
-			
 		
+	{title:"Name", field:"name", cellClick:function(e, cell){
+        //e - the click event object
+        //cell - cell component
+    },
+}	
 
   </script>
 	
