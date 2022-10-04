@@ -126,13 +126,12 @@ var table = new Tabulator("#example-table", {
   
 
 table.on("dataLoaded", function(data){
-  //data has been loaded
+  alert("Hello1");
 });
 		
 		
 	table.on("headerClick", function(e, column){
-    //e - the click event object
-    //column - column component
+  alert("Hello2");
 });	
 		
   </script>
