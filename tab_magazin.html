@@ -125,6 +125,10 @@ var table = new Tabulator("#example-table", {
     
   
 	table.on("headerClick", function(e, column){
+		
+		alert("Hello");
+		
+		alert(e, column);
     //e - the click event object
     //column - column component
 });
