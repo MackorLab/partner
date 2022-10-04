@@ -124,12 +124,8 @@ var table = new Tabulator("#example-table", {
 });
     
   
-table.on("headerClick", function(e, column){
-		
-		alert("Hello");
-		
-		
-    
+table.on("headerContext", function(e, column){
+   alert("Hello");
 });
 			
 		
