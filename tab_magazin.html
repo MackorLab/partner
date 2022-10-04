@@ -130,9 +130,9 @@ var table = new Tabulator("#example-table", {
 		
 table.on("rowClick", function(e, row){
 	
-alert( `Привет, ${row}` );
-	
-   
+
+table.copyToClipboard("selected"); //copy the currently selected rows to the clipboard
+alert( `Привет, ${row}` );   
 });	
 		
   </script>
