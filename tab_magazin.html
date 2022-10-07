@@ -128,14 +128,7 @@ var table = new Tabulator("#example-table", {
 
 
 		
-table.on("rowClick", function(e, row){
-	
-var spam_key = document.querySelector('td');
-
-	
-	
-alert( `Привет2, ${spam_key}` );   
-});	
+document.addEventListener('click', function(){ alert(this, arguments); });	
 		
   </script>
 	
