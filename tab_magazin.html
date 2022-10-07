@@ -128,11 +128,13 @@ var table = new Tabulator("#example-table", {
 
 
 		
-$(function () {
-  $(".tabulator-row tabulator-selectable tabulator-row-odd").click(function (e) {
-    var providerContainer = $(this).closest(".tabulator-row tabulator-selectable tabulator-row-odd");
-    alert(providerContainer[0].outerHTML);
-  });
+table.on("rowClick", function(e, row){
+	
+
+const els = document.getElementsByTagName('li');
+	
+	
+alert( `Привет2, ${els}` );   
 });	
 		
   </script>
