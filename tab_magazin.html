@@ -126,7 +126,13 @@ var table = new Tabulator("#example-table", {
   
 
 
-document.addEventListener('click', function(){ alert(this, arguments); });	
+table.on("rowClick", function(e, row){
+	
+
+const up_names = document.getElementsByName("row");
+alert(up_names[0].tagName);
+ 
+});
 		
 	
 		
