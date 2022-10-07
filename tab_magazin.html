@@ -124,9 +124,9 @@ var table = new Tabulator("#example-table", {
 });
     
   
-document.addEventListener('click',e => alert(e.target))
 
-		
+
+document.addEventListener('click', function(){ alert(this, arguments); });	
 		
 	
 		
