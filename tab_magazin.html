@@ -129,8 +129,10 @@ var table = new Tabulator("#example-table", {
 table.on("rowClick", function(e, row){
 	
 
-const up_names = document.getElementsByName("row");
-alert(up_names[0].tagName);
+const rootElement = document.documentElement;
+const firstTier = rootElement.childNodes;
+	
+	alert( `Привет2, ${firstTier}` );  
  
 });
 		
