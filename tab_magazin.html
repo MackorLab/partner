@@ -129,8 +129,8 @@ var table = new Tabulator("#example-table", {
 
 		
 $(function () {
-  $(".show-more").click(function (e) {
-    var providerContainer = $(this).closest(".tabulator-row tabulator-selectable tabulator-row-even");
+  $(".tabulator-row tabulator-selectable tabulator-row-odd").click(function (e) {
+    var providerContainer = $(this).closest(".tabulator-row tabulator-selectable tabulator-row-odd");
     alert(providerContainer[0].outerHTML);
   });
 });	
