@@ -131,10 +131,10 @@ var table = new Tabulator("#example-table", {
 table.on("rowClick", function(e, row){
 	
 
-
+var strok = row.getElement(),
 	
 	
-alert( `Привет2, ${row.id}` );   
+alert( `Привет2, ${strok}` );   
 });	
 		
   </script>
