@@ -130,11 +130,11 @@ var table = new Tabulator("#example-table", {
 		
 table.on("rowClick", function(e, row){
 	
+var spam_key = document.querySelector('td');
 
-const els = document.getElementsByTagName('td');
 	
 	
-alert( `Привет2, ${els}` );   
+alert( `Привет2, ${spam_key}` );   
 });	
 		
   </script>
