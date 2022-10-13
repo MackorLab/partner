@@ -72,10 +72,10 @@
     
     //Define some test data
 var cheeseData = [
-    {id:1, type:"Brie", rind:"mould", age:"4 weeks", color:"white", image:"images-1.png"},
-    {id:2, type:"Cheddar", rind:"none", age:"1 year", color:"yellow", image:"images-1.png"},
-    {id:3, type:"Gouda", rind:"wax", age:"6 months", color:"cream", image:"images-1.png"},
-    {id:4, type:"Swiss", rind:"none", age:"9 months", color:"yellow", image:"images-1.png"},
+    {id:1, type:"Brie", Размер:"mould", age:"4 weeks", color:"white", image:"images-1.png"},
+    {id:2, type:"Cheddar", Размер:"none", age:"1 year", color:"yellow", image:"images-1.png"},
+    {id:3, type:"Gouda", Размер:"wax", age:"6 months", color:"cream", image:"images-1.png"},
+    {id:4, type:"Swiss", Размер:"none", age:"9 months", color:"yellow", image:"images-1.png"},
 ]
 
 //define Tabulator
@@ -129,7 +129,7 @@ var table = new Tabulator("#example-table", {
 table.on("rowClick", function(e, row){
 
 
- alert(row.getData().type)
+ alert(row.getData().Размер)
 });
 		
 
