@@ -129,8 +129,13 @@ table.on("rowClick", function(e, row){
 });
 
 
+table.on("rowClick", function(e, row){
+var selectedData = table.getSelectedData();
+	
+  alert(selectedData);
+});
 		
-document.addEventListener('click', function(){ alert(this, arguments); });	
+
 		
   </script>
 	
