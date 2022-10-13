@@ -127,9 +127,9 @@ var table = new Tabulator("#example-table", {
 
 
 table.on("rowClick", function(e, row){
-var selectedData = table.getSelectedData();
+var selectedRows = table.getSelectedRows();
 	
-  alert(selectedData);
+  alert(selectedRows);
 });
 		
 
