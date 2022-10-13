@@ -72,10 +72,10 @@
     
     //Define some test data
 var cheeseData = [
-    {id:1, type:"Brie", rind:"L", age:"4 weeks", color:"white", image:"images-1.png"},
-    {id:2, type:"Cheddar", rind:"X", age:"1 year", color:"yellow", image:"images-1.png"},
-    {id:3, type:"Gouda", rind:"XL", age:"6 months", color:"cream", image:"images-1.png"},
-    {id:4, type:"Swiss", rind:"XXL", age:"9 months", color:"yellow", image:"images-1.png"},
+    {id:1, type:"Brie", rind:"L", age:"4 weeks", color:"white", image:"//i.ibb.co/qWXvb0x/images-1.png"},
+    {id:2, type:"Cheddar", rind:"X", age:"1 year", color:"yellow", image:"//i.ibb.co/qWXvb0x/images-1.png"},
+    {id:3, type:"Gouda", rind:"XL", age:"6 months", color:"cream", image:"//i.ibb.co/qWXvb0x/images-1.png"},
+    {id:4, type:"Swiss", rind:"XXL", age:"9 months", color:"yellow", image:"//i.ibb.co/qWXvb0x/images-1.png"},
 ]
 
 //define Tabulator
@@ -100,12 +100,12 @@ var table = new Tabulator("#example-table", {
 
         //define a table layout structure and set width of row
         rowTable = document.createElement("table")
-        rowTable.style.width = (width - 18) + "px";
+        rowTable.style.width = (width - 58) + "px";
 
         rowTabletr = document.createElement("tr");
 
         //add image on left of row
-        cellContents = "<td><img src='https://i.ibb.co/qWXvb0x/" + data.image + "'></td>";
+        cellContents = "<td><img src='https:" + data.image + "'></td>";
 
         //add row data on right hand side
         cellContents += "<td><div><strong>Type:</strong> " + data.type + "</div><div><strong>Размер:</strong> " + data.age + "</div><div><strong>Rind:</strong> " + data.rind + "</div><div><strong>Colour:</strong> " + data.color + "</div></td>"
