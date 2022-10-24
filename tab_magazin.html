@@ -213,9 +213,9 @@ inpName.addEventListener('change', function(){
 	
 	var oyus2 = [oyus];
 	
-	const people = Array.of("type", "in", oyus2);
+	const people = Array.of("type", "in");
 	
-	
+	people.push(oyus2); 
 	console.log(oyus2);
 	
 	console.log(people);
@@ -229,7 +229,7 @@ inpName.addEventListener('change', function(){
 	
 	
 	
- table.setFilter("type", "in", oyus2);		
+ table.setFilter(people);		
 }
 </script>
 	
