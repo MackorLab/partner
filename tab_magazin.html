@@ -207,8 +207,13 @@ function myFunction() {
 var inpName = document.querySelector('#filter-value');
 	
 	
+inpName.addEventListener('change', function(){
+	console.log(this.value);
+});
 	
-console.log(inpName);
+	
+	
+
 	
 	
 	
