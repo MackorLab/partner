@@ -210,7 +210,9 @@ var inpName = document.querySelector('#filter-value');
 inpName.addEventListener('change', function(){
 	
 	var oyus = this.value;
-	console.log(oyus);
+	
+	var oyus2 = [oyus];
+	console.log(oyus2);
 });
 	
 	
@@ -221,7 +223,7 @@ inpName.addEventListener('change', function(){
 	
 	
 	
- table.setFilter("type", "in", [(oyus)]);		
+ table.setFilter("type", "in", oyus2);		
 }
 </script>
 	
