@@ -99,6 +99,10 @@
 	
 	
   <button id="filter-clear">Clear Filter</button>
+	
+	
+<button onclick="myFunction()">Click me</button>
+	
 
 </div>
 	
@@ -187,7 +191,7 @@ table.on("rowClick", function(e, row){
 		
 table.setFilter("type", "in", ["Шорты-2", "Шорты-1"]);	
 				
-table.refreshFilter();	
+
 		
 		
 		
@@ -196,7 +200,11 @@ table.refreshFilter();
 	
 	
 	
-	
+<script>
+function myFunction() {
+  table.refreshFilter();	
+}
+</script>
 	
 	
 
